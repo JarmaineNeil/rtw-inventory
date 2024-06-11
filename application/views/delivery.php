@@ -48,16 +48,16 @@
           <div class="text-right mt-3 mr-4">
           <!-- Button trigger modal -->
           <a href="<?php echo base_url();?>delivery/new_delivery" class="btn btn-primary btn-sm">
-          <i class="fas fa-plus"></i> New Delivery
+          <i class="fas fa-plus"></i> New Supplier
           </a>
           </div>
           <div class="card-body">
           <table class="table-sm table table-bordered" id="item_table">
           <thead>
             <tr>
-              <th>Delivery No.</th>
-              <th>Received By</th>
-							<th>Date</th>
+              <th>Supplier No.</th>
+              <th>Supplier Name</th>
+				<th>Date</th>
               <th>Action</th>
             </tr>
           </thead>

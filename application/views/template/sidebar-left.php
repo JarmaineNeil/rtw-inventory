@@ -11,23 +11,24 @@
 						<a href="<?php echo base_url() ?>category"><i class="menu-icon fas fa-sitemap  "></i>Category </a>
 					</li>
 					<li class="">
-						<a href="<?php echo base_url() ?>item"><i class="menu-icon fas fa-cubes  "></i>Supply </a>
+						<a href="<?php echo base_url() ?>delivery"><i class="menu-icon fas fa-truck  "></i>Suppliers </a>
 					</li>
 					<li class="">
-						<a href="<?php echo base_url() ?>delivery"><i class="menu-icon fas fa-truck  "></i>Delivery </a>
+						<a href="<?php echo base_url() ?>item"><i class="menu-icon fas fa-cubes  "></i>Products </a>
+					</li>
+					
+					<li class="">
+						<a href="<?php echo base_url() ?>request"><i class="menu-icon fa fa-question"></i>Purchase Request </a>
 					</li>
 					<li class="">
-						<a href="<?php echo base_url() ?>request"><i class="menu-icon fa fa-question"></i>Request </a>
-					</li>
-					<li class="">
-						<a href="<?php echo base_url() ?>release"><i class="menu-icon fas fa-file"></i>Release </a>
+						<a href="<?php echo base_url() ?>release"><i class="menu-icon fas fa-file"></i>Purchase Approval </a>
 					</li>
 					<li class="">
 						<a href="<?php echo base_url() ?>user"><i class="menu-icon fa fa-users"></i>Users </a>
           </li> 
-					<li class="menu-title">Extras</li> 
+					<!-- <li class="menu-title">Extras</li> 
 					<li class="">
-						<a href="logs"><i class="menu-icon fas fa-globe"></i>Logs </a>
+						<a href="logs"><i class="menu-icon fas fa-globe"></i>Logs </a> -->
           </li>    
 				</ul>
 			</div><!-- /.navbar-collapse -->

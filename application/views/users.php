@@ -58,7 +58,6 @@
               <th>Name</th>
               <th>Username</th>
               <th>User Type</th>
-							<th>Designation Office</th>
 							<th>Action</th>
             </tr>
           </thead>
@@ -69,7 +68,6 @@
                   <td><?php echo $user['name'];?></td>
 									<td><?php echo $user['username'];?></td>
                   <td><?php echo $user['user_type'];?></td>
-                  <td><?php echo $user['designation_office'];?></td> 
                   <td>
                     <a href="<?php echo base_url().'user/edit_user/'. $user['user_id'] ?>" class="text-info edit-category"><i class="fa fa-edit"></i></a> |  
                     <a href="<?php echo base_url().'user/delete_user/'.$user['user_id'];?>" onclick="return confirm('Are you sure you want to delete this user?')" class="text-danger"><i class="fa fa-trash"></i></a>

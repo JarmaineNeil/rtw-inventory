@@ -66,7 +66,7 @@
 									<h3 class="mb-0 fw-r">
 										<span class="widget-count"><?php echo $tot_supply; ?></span>
 									</h3>
-									<p class="text-light mt-1 m-0">Supply</p>
+									<p class="text-light mt-1 m-0">Products</p>
 								</div>
 								<div class="card-right float-right text-right">
 									<i class="icon   icon-lg animated fadeInLeft  fas fa-cubes"></i>
@@ -82,7 +82,7 @@
 									<h3 class="mb-0 fw-r">
 										<span class="widget-count"><?php echo $tot_pending; ?></span>
 									</h3>
-									<p class="text-light mt-1 m-0">Pending</p>
+									<p class="text-light mt-1 m-0">Purchase Request</p>
 								</div>
 								<div class="card-right float-right text-right">
 									<i class="icon   icon-lg animated wobble loader  fas fa-spinner"></i>
@@ -112,7 +112,9 @@
 					<div class="col-lg-12"> 
 						<div class="card">
 							<div class="card-body text-center animated rubberBand  ">
-								<img width="500px;" src="<?php echo base_url() ?>assets/images/is.png" alt="Dashboard Picture" sizes="" srcset="">
+								<img width="500px;" src="<?php echo base_url() ?>assets/images/rtw.png" alt="Dashboard Picture" sizes="" srcset="">
+							
+					><br><br><br><br><br><br><hr>
 							</div>
 						</div>
 					</div>

@@ -31,6 +31,7 @@ public function login_submit()
 
     $session = array(
       'user_id' => $result['user_id'],
+      'name' => $result['name'],
       'username' => $result['username'],
       'user_type' => $result['user_type'],
       'designation_office' => $result['designation_office']

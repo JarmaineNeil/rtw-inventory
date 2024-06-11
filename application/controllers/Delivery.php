@@ -13,7 +13,7 @@ class Delivery extends CI_Controller {
     }
     public function index()
     { 
-        $data['page_title'] = "Delivery"; 
+        $data['page_title'] = "Suppliers"; 
         $data['delivery'] = $this->delivery_model->get_delivery(); 
         $this->load->view('delivery', $data, FALSE); 
 
@@ -21,7 +21,7 @@ class Delivery extends CI_Controller {
 
     public function new_delivery()
     {
-        $data['page_title'] = "New Delivery"; 
+        $data['page_title'] = "New Supplier"; 
         $data['requests'] = $this->inventory_model->get_requests();
         $data['category'] = $this->category_model->get_category();
         $data['items'] = $this->item_model->get_items();
@@ -32,7 +32,7 @@ class Delivery extends CI_Controller {
 
     public function edit_delivery_item($id)
     {
-        $data['page_title'] = "Edit Delivery"; 
+        $data['page_title'] = "Edit Supplier"; 
         $data['delivery'] = $this->delivery_model->select_delivery($id);
         $data['delivery_items'] = $this->delivery_model->get_delivery_item($id);
         $data['category'] = $this->category_model->get_category();

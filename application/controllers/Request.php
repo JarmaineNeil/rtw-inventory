@@ -33,7 +33,6 @@ class Request extends CI_Controller {
   public function submit_item_request()
   {
     $data = array(
-      'requesting_office' => $this->input->post('req_office'),
       'request_date' => date('Y-m-d H:i:s')
     );
 
@@ -109,9 +108,7 @@ class Request extends CI_Controller {
 
   public function update_request_item($id)
   {
-        $arr = array(
-            'requesting_office' => $this->input->post('req_office')
-        );
+        $arr = "Request";
         // Update request
         $this->inventory_model->update_request($id,$arr);
 
@@ -261,32 +258,7 @@ class Request extends CI_Controller {
   }
 
   
-	public function get_notification()
-	{ 
-
-		if($_GET['unseen_notif'] == 'check_quantity'):  
-			$count = $this->inventory_model->check_quantity()->num_rows();  
-			$query = $this->inventory_model->check_quantity()->result_array(); 
-            
-            $output = '<p class="red">You have '.$count.' Notification</p> ';
-            foreach($query as $row){
-                $output .= '
-                    <a class="dropdown-item media" href="'.base_url().'item/edit_item/'.$row['item_no'].'">
-                        <i class="fas fa-box"></i>
-                        <p><span class=" text-capitalize font-weight-bold"><u>'.$row["description"].'</u></span> is below on stock.</p>
-                    </a> 
-                ';
-
-            }    
-		endif;  
-			
-		$data = array(
-				'notification' => $output,
-				'unseen_notification'  => $count,
-		);
-		
-		echo json_encode($data); 
-	}
+	
   
 }
          
