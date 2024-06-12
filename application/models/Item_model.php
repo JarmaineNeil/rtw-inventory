@@ -3,11 +3,20 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
                         
 class Item_model extends CI_Model {
-                        
+
+  
+  public function get_items_with_supplier() {
+    $this->db->select('item.*, supplier.supplier_name');
+    $this->db->from('item');
+    $this->db->join('supplier', 'item.supplier_id = supplier.supplier_id', 'left');
+    return $this->db->get()->result_array();
+}
   public function get_items(){
                           
     $this->db->from('item');
     $this->db->join('category', 'category.category_id = item.category_id', 'left');
+    
+    $this->db->join('supplier', 'supplier.supplier_id = item.supplier_id', 'left');
     return $this->db->get()->result_array();
                                   
   }
@@ -27,6 +36,8 @@ class Item_model extends CI_Model {
   public function select_item($data){  
     $this->db->from('item');
     $this->db->join('category', 'category.category_id = item.category_id', 'left');
+    
+    $this->db->join('supplier', 'supplier.supplier_id = item.supplier_id', 'left');
     $this->db->where('item_no', $data);
     return $this->db->get()->result_array()[0];
   }
@@ -72,6 +83,8 @@ class Item_model extends CI_Model {
     
     $this->db->from('item');
     $this->db->join('category', 'category.category_id = item.category_id', 'left');
+    
+    $this->db->join('supplier', 'supplier.supplier_id = item.supplier_id', 'left');
     return $this->db->get()->num_rows();
   }
 }

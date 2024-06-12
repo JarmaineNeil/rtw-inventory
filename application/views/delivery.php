@@ -47,9 +47,9 @@
         <div class="card text-left">
           <div class="text-right mt-3 mr-4">
           <!-- Button trigger modal -->
-          <a href="<?php echo base_url();?>delivery/new_delivery" class="btn btn-primary btn-sm">
-          <i class="fas fa-plus"></i> New Supplier
-          </a>
+		  <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#addSupplierModal">
+          <i class="fas fa-plus"></i> Add Supplier
+          </button>
           </div>
           <div class="card-body">
           <table class="table-sm table table-bordered" id="item_table">
@@ -57,7 +57,6 @@
             <tr>
               <th>Supplier No.</th>
               <th>Supplier Name</th>
-				<th>Date</th>
               <th>Action</th>
             </tr>
           </thead>
@@ -90,7 +89,36 @@
 				<!-- /#add-category -->
 			</div>
 			<!-- .animated -->
-		</div>
+		</div><!-- Add Supplier Modal -->
+<div class="modal fade" id="addSupplierModal" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add Supplier</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <form action="<?php echo base_url();?>submit_new_supplier" method="POST">
+            <div class="form-group">
+              <label for="supplierName">Supplier Name</label>
+              <input name="supplier_name" id="supplierName" class="form-control" type="text" placeholder="Enter Supplier Name" required>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+      </form>
+    </div>
+  </div>
+</div>
+<!-- End Add Supplier Modal -->
+
+		
 		<!-- /.content -->
 		<div class="clearfix"></div>
 		<!-- Footer -->

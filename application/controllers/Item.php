@@ -9,6 +9,7 @@ class Item extends CI_Controller {
         parent::__construct();
         if(!$this->session->userdata('user_id')){ 
             redirect('login'); 
+            
         }  
     }
         
@@ -17,6 +18,7 @@ class Item extends CI_Controller {
         $data['page_title'] = "Items";
         
         $data['items'] = $this->item_model->get_items();
+    
         
         $this->load->view('item', $data, FALSE); 
     } 
@@ -25,7 +27,12 @@ class Item extends CI_Controller {
     { 
         $data['page_title'] = "Add Items";
         // dropdown
+        
+        $this->load->model('Supplier_model');
         $data['category'] = $this->category_model->get_category();
+        $data['suppliers'] = $this->Supplier_model->get_suppliers(); // Assuming you have a method named 'get_suppliers()' in your Supplier_model
+
+        
         
         $this->load->view('add_item', $data, FALSE); 
 
@@ -33,19 +40,26 @@ class Item extends CI_Controller {
 
     public function submit_item()
     { 
-
         $data = array(
-            'description' => $this->input->post('description'), 
-            'size' => $this->input->post('size'), 
+            'description' => $this->input->post('description'),
+            'size' => $this->input->post('size'),
+            'color' => $this->input->post('color'), // Added color parameter
+           
             'quantity' => $this->input->post('quantity'),
             'unit' => $this->input->post('unit'),
             'limit_quantity' => $this->input->post('limit_quantity'),
+            'base_price' => $this->input->post('base_price'), // Added base price parameter
+            
+            'selling_price' => $this->input->post('selling_price'), // Added base price parameter
+            'brand_name' => $this->input->post('brand_name'),
         );
 
-        if(!$this->input->post('category_id') == ''){
+      if(!$this->input->post('category_id') == ''){
             $data['category_id'] = $this->input->post('category_id');
         }
- 
+        if(!$this->input->post('supplier_id') == ''){
+            $data['supplier_id'] = $this->input->post('supplier_id');
+        }
         $result = $this->item_model->insert_item($data); 
 
         if($result>0){

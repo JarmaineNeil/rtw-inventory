@@ -46,36 +46,50 @@
 				<!-- /#event-modal -->
 				<div class="card">
           <form action="<?php echo base_url();?>item/submit_item" method="POST">
-					<div class="card-body card-block">
+		 
 						<div class="form-group">
-              <label class=" form-control-label">Item Description</label>
-              <input value="<?php echo $this->session->flashdata('description');?>" name="description" required placeholder="Enter description.." class="form-control" type="text">
-						</div>
+              <label class="form-control-label">Product Name</label>
+              <input name="description" required placeholder="Enter product name..." class="form-control" type="text">
+            </div>
 						<div class="form-group">
-              <label class=" form-control-label">Size(Optional)</label>
-              <input value="<?php echo $this->session->flashdata('size');?>" name="size" placeholder="Enter size.." class="form-control" type="text">
-            </div>
-            <div class="form-group">
-              <label class=" form-control-label">Quantity</label>
-              <input value="<?php echo $this->session->flashdata('qty');?>" name="quantity" required placeholder="Enter quantity.." class="form-control" type="number">
-            </div>
-            <div class="form-group">
-              <label class=" form-control-label">Unit</label>
-              <input value="<?php echo $this->session->flashdata('unit');?>" name="unit" required placeholder="Enter unit.." class="form-control" type="text">
-            </div>
-            <div class="form-group">
-              <label class=" form-control-label">Limit Quantity</label>
-              <input value="<?php echo $this->session->flashdata('qty');?>" name="limit_quantity" required placeholder="Enter quantity.." class="form-control" type="number">
-            </div>
-            <div class="form-group">
-              <label class=" form-control-label">Category</label>
+              <label class="form-control-label">Category</label>
               <select name="category_id" class="form-control">
-                <option value="">Choose category..</option>
+                <option value="">Choose category...</option>
                 <?php if(!empty($category)){?>
                   <?php foreach($category as $key => $ctgry){?> 
                     <option value="<?php echo $ctgry['category_id'];?>"><?php echo $ctgry['category'];?></option>
                 <?php } } ?>
               </select>
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">Size</label>
+              <input name="size" placeholder="Enter size..." class="form-control" type="text">
+            </div>
+            <div class="form-group">
+              <label class="form-control-label">Color</label>
+              <input name="color" placeholder="Enter color..." class="form-control" type="text">
+            </div>
+						<div class="form-group">
+              <label class="form-control-label">Product Base Price</label>
+              <input name="base_price" required placeholder="Enter base price..." class="form-control" type="number" step="0.01">
+            </div>
+						<div class="form-group">
+              <label class="form-control-label">Selling Price</label>
+              <input name="selling_price" required placeholder="Enter selling price..." class="form-control" type="number" step="0.01">
+            </div>
+						<div class="form-group">
+              <label class="form-control-label">Supplier</label>
+			  <select name="supplier_id" class="form-control">
+        <option value="">Choose supplier...</option>
+        <?php if(!empty($suppliers)){?>
+            <?php foreach($suppliers as $supplier){?> 
+                <option value="<?php echo $supplier['supplier_id'];?>"><?php echo $supplier['supplier_name'];?></option>
+            <?php } } ?>
+    </select>
+            </div>
+						<div class="form-group">
+              <label class="form-control-label">Brand Name</label>
+              <input name="brand_name" required placeholder="Enter brand name..." class="form-control" type="text">
             </div>
 						<div class="text-right">
 							<a href="<?php echo base_url();?>add_item" class="btn btn-secondary">

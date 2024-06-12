@@ -55,26 +55,38 @@
           <div class="card-body">
           <table class="table table-bordered" id="item_table">
           <thead>
-            <tr>
-							<th>Description</th>
-							<th>Size</th>
-              <th>Quantity</th>
-              <th>Unit</th>
-							<th>Limit Quantity</th>
+		  <tr>
+							<th>Id</th>
+							<th>Name</th>
 							<th>Category</th>
+							<th>Size</th>
+							<th>Color</th>
+              <th>Base Price</th>
+              <th>Selling Price</th>
+              <th>Supplier</th>
+              <th>Brand Name</th>
 							<th>Action</th>
             </tr>
           </thead>
           <tbody>
             <?php if(!empty($items)){ ?>
               <?php foreach($items as $key => $itm){ ?> 
-                <tr>
+				<tr>
+									<td><?php echo $itm['item_no'];?></td>
 									<td><?php echo $itm['description'];?></td>
-									<td><?php echo $itm['size'];?></td>
-                  <td><?php echo $itm['quantity'];?></td>
-									<td><?php echo $itm['unit'];?></td>
-									<td><?php echo $itm['limit_quantity'];?></td>
 									<td><?php if(empty($itm['category'])){ echo 'No category';}else{ echo $itm['category'];}?></td>
+									<td><?php echo $itm['size'];?></td>
+                  <td><?php echo $itm['color'];?></td>
+                  <td><?php echo $itm['base_price'];?></td>
+                  <td><?php echo $itm['selling_price'];?></td>
+                  
+				  <td><?php if(empty($itm['supplier_name'])){ echo 'No supplier';}else{ echo $itm['supplier_name'];}?></td>
+                  <td><?php echo $itm['brand_name'];?></td>
+				  
+                  <td hidden><?php echo $itm['quantity'];?></td>
+									<td hidden><?php echo $itm['unit'];?></td>
+									<td hidden><?php echo $itm['limit_quantity'];?></td>
+									
                   <td>
                     <a href="<?php echo base_url().'item/edit_item/'. $itm['item_no'] ?>" class="text-info edit-category"><i class="fa fa-edit"></i></a> |  
                     <a href="<?php echo base_url().'item/delete_item/'.$itm['item_no'];?>" onclick="return confirm('Are you sure you want to delete this item?')" class="text-danger"><i class="fa fa-trash"></i></a>
@@ -97,7 +109,6 @@
 	</div>
 	<!-- /#right-panel -->
 
-	<?php $this->load->view('template/js.php');  ?>
  
 </body>
 
