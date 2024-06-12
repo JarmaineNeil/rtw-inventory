@@ -4,31 +4,68 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
 class Delivery extends CI_Controller {
 
-    public function __construct()
-    {
-        parent::__construct();
-        if(!$this->session->userdata('user_id')){ 
-        redirect('login'); 
-        }  
-    }
-    public function index()
-    { 
-        $data['page_title'] = "Suppliers"; 
-        $data['delivery'] = $this->delivery_model->get_delivery(); 
-        $this->load->view('delivery', $data, FALSE); 
+  public function __construct()
+  {
+      parent::__construct();
+      if(!$this->session->userdata('user_id')){ 
+          redirect('login'); 
+      }  
+      $this->load->model('Supplier_model'); // Load Supplier_model
+  }
 
-    } 
+  public function index()
+  { 
+      $data['page_title'] = "Suppliers"; 
+      // Fetch suppliers data
+      $data['suppliers'] = $this->Supplier_model->get_suppliers(); 
+      $this->load->view('delivery', $data, FALSE); 
+  } 
 
-    public function new_delivery()
-    {
-        $data['page_title'] = "New Supplier"; 
-        $data['requests'] = $this->inventory_model->get_requests();
-        $data['category'] = $this->category_model->get_category();
-        $data['items'] = $this->item_model->get_items();
+  public function new_delivery()
+  {
+      $data['page_title'] = "New Supplier"; 
+      $data['requests'] = $this->inventory_model->get_requests();
+      $data['category'] = $this->category_model->get_category();
+      $data['items'] = $this->item_model->get_items();
 
-        $this->load->view('new_delivery', $data, FALSE); 
+      $this->load->view('new_delivery', $data, FALSE); 
+  }
+  public function submit_supplier()
+  {
+      $data = $this->input->post();
+  
+      $result = $this->Supplier_model->insert_supplier($data); 
+      if ($result > 0) {
+          $this->session->set_flashdata('message', '
+              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  <span><i class="fas fa-check"></i> Successfully Added.</span>
+              </div>
+          ');
+  
+          $logs = array(
+              'user_id' => $this->session->userdata('user_id'),
+              'description' => 'Create supplier',
+              'date' => date('Y-m-d H:i:s')
+          );
+  
+          $this->user_model->insert_logs($logs);
+      } else {
+          $this->session->set_flashdata('message', '
+              <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                  </button>
+                  <span><i class="fas fa-exclamation"></i> Supplier already exists. Please try again.</span>
+              </div>
+          ');
+      }
+      redirect('delivery');
+  }
 
-    }
+  
 
     public function edit_delivery_item($id)
     {
@@ -41,6 +78,11 @@ class Delivery extends CI_Controller {
         $this->load->view('edit_delivery_item', $data, FALSE); 
 
     }
+    public function edit_supplier($id) {
+      $data['page_title'] = "Edit Supplier"; 
+      $data['supplier'] = $this->Supplier_model->update_supplier($id);
+      $this->load->view('delivery', $data, FALSE); 
+  }
 
     public function submit_edit_delivery_item($id){
       $items = $this->input->post();

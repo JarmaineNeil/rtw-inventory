@@ -1,6 +1,6 @@
     <!-- Header-->
-    <header id="header" class="header">
-    	<div class="top-left">
+    <header id="header" class="header" style="background-color:#ADD8E6">
+    	<div class="top-left " style="display: flex; justify-content: flex-start; margin: 0; padding: 0;">
     		<div class="navbar-header">
 			<a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
 			<a href=""><br><br></a>
